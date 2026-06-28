@@ -1,0 +1,28 @@
+from dataclasses import dataclass, field
+from model.track_info import TrackInfo
+
+
+@dataclass(eq=False)
+class Composer:
+    """
+    Nodo del grafo.
+
+    Attributi:
+    - Name: nome del compositore, preso da Track.Composer
+    - tracks: lista dei brani validi associati al compositore
+
+    Uso eq=False e definisco io __eq__ e __hash__,
+    così NetworkX considera due Composer uguali se hanno lo stesso Name.
+    """
+
+    Name: str
+    tracks: list[TrackInfo] = field(default_factory=list)
+
+    def __hash__(self):
+        return hash(self.Name)
+
+    def __eq__(self, other):
+        return isinstance(other, Composer) and self.Name == other.Name
+
+    def __str__(self):
+        return self.Name
