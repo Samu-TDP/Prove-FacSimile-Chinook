@@ -1,0 +1,10 @@
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class MediaType:
+    MediaTypeId: int
+    Name: str
+
+    def __str__(self):
+        return self.Name
