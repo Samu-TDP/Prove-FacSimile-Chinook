@@ -1,0 +1,13 @@
+from dataclasses import dataclass
+from datetime import datetime
+
+
+@dataclass(frozen=True)
+class Invoice:
+    InvoiceId: int
+    CustomerId: int
+    InvoiceDate: datetime
+    Total: float
+
+    def __str__(self):
+        return f"Invoice {self.InvoiceId}"
