@@ -1,3 +1,10 @@
+CONDIZIONE ARCO : artista in comune; verso per spesa
+
+
+
+Pattern definitivo da usare domani
+
+Per una traccia Chinook orientata, scriviti questo schema:
 1. Dropdown:
    DAO.getAllQualcosa()
 
