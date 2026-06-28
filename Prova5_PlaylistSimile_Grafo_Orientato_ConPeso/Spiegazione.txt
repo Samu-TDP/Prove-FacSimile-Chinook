@@ -1,0 +1,49 @@
+Il pattern sarà:
+
+DAO:
+- getAllGeneri()
+- getAllNodes(genre_id)
+- getNumeroBraniPlaylist(genre_id)
+- getBraniPerPlaylist(genre_id)
+- getAllEdges(genre_id)  --> archi grezzi id1-id2
+
+Model:
+- crea nodi
+- crea idMap
+- prende numero brani per orientare
+- prende brani per playlist per calcolare il peso
+- prende archi grezzi
+- orienta e pesa gli archi
+- ricorsione
+
+
+Schema mentale della PROVA 5
+
+Questa prova segue esattamente il pattern che devi memorizzare:
+
+Dropdown = Genre
+
+Nodi = Playlist che contengono almeno un Track del genere
+
+Valore per orientare = numero di Track del genere nella Playlist
+
+Arco grezzo = coppia di Playlist che condividono almeno un Track del genere
+
+Peso = numero di Track condivisi
+
+Verso = playlist con più Track del genere -> playlist con meno Track del genere
+
+Parità = doppio arco
+
+La ricorsione invece è questo schema:
+
+parziale = cammino che sto costruendo
+bestPath = miglior cammino trovato finora
+ultimo_peso = peso dell'ultimo arco usato
+
+Per ogni successore:
+    se non è già nel cammino
+    e se peso nuovo arco < ultimo_peso:
+        aggiungo nodo
+        ricorsione
+        tolgo nodo
