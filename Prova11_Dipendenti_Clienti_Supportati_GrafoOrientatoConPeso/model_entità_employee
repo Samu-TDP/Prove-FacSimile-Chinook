@@ -1,0 +1,12 @@
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Employee:
+    EmployeeId: int
+    FirstName: str
+    LastName: str
+    Title: str
+
+    def __str__(self):
+        return f"{self.FirstName} {self.LastName}"
