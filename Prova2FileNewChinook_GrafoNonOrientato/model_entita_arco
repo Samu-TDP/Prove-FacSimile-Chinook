@@ -1,0 +1,24 @@
+from dataclasses import dataclass
+
+
+@dataclass
+class Arco:
+    """
+    Arco grezzo già pesato.
+
+    id1:
+        nome del primo compositore
+
+    id2:
+        nome del secondo compositore
+
+    peso:
+        numero di playlist distinte in cui compaiono entrambi
+    """
+
+    id1: str
+    id2: str
+    peso: int
+
+    def __str__(self):
+        return f"{self.id1} - {self.id2}: {self.peso}"
