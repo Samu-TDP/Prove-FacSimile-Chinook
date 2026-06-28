@@ -1,1 +1,27 @@
+1. Dropdown:
+   DAO.getAllQualcosa()
 
+2. Nodi:
+   DAO.getAllNodes(parametro)
+
+3. Valore per orientare:
+   DAO.getValoreNodi(parametro)
+   esempio: spesa, popolarità, numero acquisti, fatturato
+
+4. Archi grezzi:
+   DAO.getAllEdges(parametro)
+   ritorna solo coppie id1-id2
+
+5. Model:
+   - recupera nodo1 e nodo2 da idMap
+   - recupera valore1 e valore2
+   - peso = valore1 + valore2, oppure formula richiesta
+   - decide verso
+   - add_edge
+
+Dropdown = Genre
+Nodi = Customer che hanno acquistato il genere
+Valore per orientare = spesa cliente nel genere
+Archi grezzi = coppie di clienti con artista in comune
+Peso = spesa1 + spesa2
+Verso = cliente con spesa maggiore -> cliente con spesa minore
