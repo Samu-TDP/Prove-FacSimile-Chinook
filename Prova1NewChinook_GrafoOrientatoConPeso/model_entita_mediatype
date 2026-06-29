@@ -1,0 +1,50 @@
+from dataclasses import dataclass, field
+
+
+@dataclass(eq=False)
+class MediaType:
+    """
+    Nodo del grafo.
+
+    Ogni nodo rappresenta un record della tabella MediaType.
+
+    Attributi:
+    - MediaTypeId: chiave primaria del MediaType
+    - Name: nome del MediaType
+    - acquisti_per_mese: dizionario richiesto dalla traccia
+
+    acquisti_per_mese ha questa forma:
+
+    {
+        1: [(CustomerId, InvoiceLineId), (CustomerId, InvoiceLineId)],
+        2: [(CustomerId, InvoiceLineId)],
+        ...
+    }
+
+    Dove:
+    - la chiave è il mese, da 1 a 12;
+    - il valore è la lista delle coppie (CustomerId, InvoiceLineId)
+      relative agli acquisti di quel MediaType in quel mese.
+    """
+
+    MediaTypeId: int
+    Name: str
+    acquisti_per_mese: dict = field(default_factory=dict)
+
+    def __hash__(self):
+        """
+        NetworkX usa i nodi come chiavi di dizionario.
+        Quindi il nodo deve essere hashabile.
+
+        Identifico un MediaType tramite il suo MediaTypeId.
+        """
+        return hash(self.MediaTypeId)
+
+    def __eq__(self, other):
+        """
+        Due MediaType sono uguali se hanno lo stesso MediaTypeId.
+        """
+        return isinstance(other, MediaType) and self.MediaTypeId == other.MediaTypeId
+
+    def __str__(self):
+        return self.Name
